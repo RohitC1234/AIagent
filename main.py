@@ -17,8 +17,11 @@ llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview")
 
 system_prompt = """ 
 You are a helpful assistant.
+Use the get_date tool if the user is asking about the today's date.
 """
 
 agent = create_agent(model=llm, tools=[get_date], system_prompt=system_prompt)
 user_query = input("Enter a query: ")
-agent.invoke({"messages":[{"role":"user", "content": "user_query"}]})
+response = agent.invoke({"messages":[{"role":"user", "content": user_query}]})
+
+print(response['messages'][-1].content[0])
