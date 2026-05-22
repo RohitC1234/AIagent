@@ -24,7 +24,7 @@ search_tool = TavilySearchResults()
 conn = sqlite3.connect("chatbot_memory.db", check_same_thread=False)
 checkpointer = SqliteSaver(conn)
 
-llm = ChatOllama(model="qwen3-vl:4b")
+llm = ChatOllama(model="qwen3.5:9b")
 
 system_prompt = """ 
 You are a helpful assistant.
